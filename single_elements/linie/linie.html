@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linie</title>
+</head>
+<body>
+    <div class="linie-cont">
+        <div class="linie">
+            <div class="linie-el"></div>
+            <div class="linie-el"></div>
+            <div class="linie-el"></div>
+            <div class="linie-el"></div>
+            <div class="linie-el"></div>
+            <div class="linie-el"></div>
+            <div class="linie-el"></div>
+        </div>
+    </div>
+
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .linie-cont{
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+    }
+    .linie{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 0 20px;
+    }
+    .linie-el{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        background-image: url(img/dot.svg);
+        width: 3px;
+        z-index: 5;
+        position: relative;
+    }
+    .linie-el::after{
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        background-color: white;
+        opacity: 0.5;
+    }
+    @media (max-width: 900px) {
+    .linie{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px 0 10px;
+    }
+    .linie-el:nth-child(n+3){
+        display: none;
+    }
+    }
+
+</style>
+</html>
