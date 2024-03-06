@@ -1,3 +1,5 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/home_page.php" }]
+    "rewrites": [
+        {"source": "/(.*)", "destination": "/"}
+    ]
 }
