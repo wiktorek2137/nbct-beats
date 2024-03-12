@@ -1,6 +1,5 @@
 let currentTrackIndex = 0; // Indeks aktualnie odtwarzanego utworu
 let tracks = []; // Lista utworów
-console.log(tracks)
 document.addEventListener('DOMContentLoaded', () => {
     let urlParams = new URLSearchParams(window.location.search);
     let beatID = urlParams.get('id');
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dataType: 'json',
             data: {id: beatID},
             success:function(singleBeat){
-                console.log(singleBeat);
+                document.title = singleBeat[0].beat_title+" | "+"NBCT BEATS";
                 let beatName = document.getElementById("beat-name");
                 beatName.innerHTML = singleBeat[0].beat_title;
                 let beatAutorName = document.getElementById("beat-autor-name");

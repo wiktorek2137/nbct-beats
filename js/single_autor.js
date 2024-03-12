@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dataType: 'json',
             data: {id: producerID},
             success:function(producer){
+                document.title = producer[0].producer_name+" | "+"NBCT BEATS";
                 let autor = document.getElementById("autor-name");
                 autor.innerHTML = producer[0].producer_name;
                 let autor_img = document.getElementsByClassName("beat-info-el-img")[0];
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             dataType: 'json',
             data: {id: producerID},
             success: function(producerBeat) {
-                console.log(producerBeat)
                 // Zakładamy, że producerBeat jest już poprawnie sparsowanym obiektem JSON
                 for (let NewestBeat of producerBeat) {
                     let singleNewestBeat = {
@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
             dataType: 'json',
             data: {id: producerID},
             success: function(producerBeat) {
-                console.log(producerBeat)
                 // Zakładamy, że producerBeat jest już poprawnie sparsowanym obiektem JSON
                 for (let NewestBeat of producerBeat) {
                     let singleNewestBeat = {

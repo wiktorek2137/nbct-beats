@@ -10,10 +10,8 @@ if ($_SESSION['type'] !== 'admin') {
     header('Location: login_page.php');
     exit;
 }
-
+$prodId = isset($_SESSION['prod_id']) ? $_SESSION['prod_id'] : '0';
 $userid = $_SESSION['id'];
-$prodid = $_SESSION['prod_id'];
-
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -147,8 +145,236 @@ $prodid = $_SESSION['prod_id'];
             </div>
             <div class="panel-content">
                 <div class="panel-choose">
-                    <div class="panel-choose-post">
-                        <!-- CONTENT -->
+                    <div class="panel-choose-post" id="slide1">
+
+                        <div class="panel-choose-post-title">
+                            <a>PANEL</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <div class="panel-choose-post-content-el">
+                                <div class="panel-choose-post-content-el-img"></div>
+                                <div class="panel-choose-post-content-el-info">
+                                    <p>NAJNOWSZY BEAT</p>
+                                    <a>XXX SŁUCHACZY</a>
+                                    <a>XXX ODDTWORZEŃ</a>
+                                    <a>XXX POLUBIEŃ</a>
+                                    <a>XXX PLN</a>
+                                </div>
+                                <div class="panel-choose-post-content-el-stats">
+                                    <p>OSTATNIE 7 DNI</p>
+                                    <a>XXX SŁUCHACZY</a>
+                                    <a>XXX ODDTWORZEŃ</a>
+                                    <a>XXX POLUBIEŃ</a>
+                                    <a>XXX PLN</a>
+                                </div>
+
+                            </div>
+                            <form action="php/beatAdd.php" method="post" enctype="multipart/form-data">
+                            <div class="panel-choose-post-content-el-form">
+                                <div class="panel-form-headliner">
+                                    <a>DODAJ NOWY BEAT</a>
+                                </div>
+                                <div class="panel-form-content">
+                                    <div class="panel-form-item">
+                                        <a>OKŁADKA</a>
+                                        <input type="file" name="beat_cover">
+                                    </div>
+                                    <div class="panel-form-item">
+                                        <a>PLIK MP3</a>
+                                        <input type="file" name="beat_music">
+                                    </div>
+                                    <div class="panel-form-item">
+                                        <a>TYTUŁ</a>
+                                        <input type="text" name="beat_title" placeholder="Tytuł twojego beatu">
+                                    </div>
+                                    <div class="panel-form-item">
+                                        <a>CENA ZA MP3</a>
+                                        <input type="text" name="beat_price" placeholder="Cena minimalna">
+                                    </div>
+                                    <div class="panel-form-item">
+                                        <a>KEY</a>
+                                        <select name="beat_key" id="key-id">
+                                            <option value="">WYBIERZ OPCJĘ</option>
+                                            <option value="C Minor">C Minor</option>
+                                            <option value="C# Minor">C# Minor</option>
+                                            <option value="D Minor">D Minor</option>
+                                            <!-- Dodaj pozostałe opcje według potrzeb -->
+                                        </select>
+                                    </div>
+                                    <div class="panel-form-item">
+                                        <a>BPM</a>
+                                        <input type="number" name="beat_bpm" placeholder="Wpisz bpm" max="500">
+                                    </div>
+                                    <div class="panel-form-item">
+                                        <a>KATEGORIA</a>
+                                        <select name="beat_cat" id="cat-id">
+                                            <option value="">WYBIERZ OPCJĘ</option>
+                                            <option value="HIP-HOP">HIP-HOP</option>
+                                            <option value="POP">POP</option>
+                                            <option value="HOUSE">HOUSE</option>
+                                            <option value="DRILL">DRILL</option>
+                                            <!-- Dodaj pozostałe kategorie według potrzeb -->
+                                        </select>
+                                    </div>
+                                    <div class="panel-form-btn">
+                                        <button type="submit">DODAJ BEAT</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        </div>
+
+                    </div>
+                    <div class="panel-choose-post" id="slide2" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>TWOJE TREŚCI</a>
+                        </div>
+                        <div class="panel-choose-post-content-headliner">
+                                    <div class="panel-choose-post-content-tresci-info">
+                                        <div class="panel-choose-post-content-tresci-details panel-choose-post-content-column">
+                                            <div class="panel-choose-post-content-tresci-views">
+                                                <a>PRODUKCJE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
+                                        <a>WYŚWIETLENIA</a>
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
+                                        <a>POLUBIENIA</a>
+
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>ZAROBEK</a>
+
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <!-- <a>DZIAŁANIA</a> -->
+
+                                    </div>
+                            </div>
+                        <div class="panel-choose-post-content">
+                            <!-- TREŚCI -->
+                            <div class="panel-choose-post-content-tresci">
+                                <!--  -->
+                                <div class="panel-choose-post-content-tresci-el">
+                                    <div class="panel-choose-post-content-tresci-info panel-choose-post-content-column">
+                                        <div class="panel-choose-post-content-tresci-img">
+                                        </div>
+                                        <div class="panel-choose-post-content-tresci-details">
+                                            <div class="panel-choose-post-content-tresci-info-title">
+                                                <a>tytul</a>
+                                            </div>
+                                            <div class="panel-choose-post-content-tresci-info-desc">
+                                                <a>120BPM</a>
+                                                <a>C#m</a>
+                                                <a>TRAP</a>
+                                                <a>400PLN</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="icons-on-hover">
+                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
+                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
+                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
+                                    </div> -->
+                                    <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
+                                        <a>10 000</a>
+                                        <img src="img/eye-white.png" alt="Ilość wyświetleń" class="panel-choose-post-content-icon">
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
+                                        <a>500</a>
+                                        <img src="img/star-white.png" alt="Ilość polubień" class="panel-choose-post-content-icon">
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>12 320PLN</a>
+                                        <img src="img/money-white.png" alt="Twój zarobek" class="panel-choose-post-content-icon">
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>EDYTUJ</a>
+                                        <a>&nbsp;/&nbsp;</a>
+                                        <a>USUŃ</a>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <div class="panel-choose-post-content-tresci-el">
+                                    <div class="panel-choose-post-content-tresci-info panel-choose-post-content-column">
+                                        <div class="panel-choose-post-content-tresci-img">
+                                        </div>
+                                        <div class="panel-choose-post-content-tresci-details">
+                                            <div class="panel-choose-post-content-tresci-info-title">
+                                                <a>tytul</a>
+                                            </div>
+                                            <div class="panel-choose-post-content-tresci-info-desc">
+                                                <a>120BPM</a>
+                                                <a>C#m</a>
+                                                <a>TRAP</a>
+                                                <a>400PLN</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="icons-on-hover">
+                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
+                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
+                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
+                                    </div> -->
+                                    <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
+                                        <a>10 000</a>
+                                        <img src="img/eye-white.png" alt="Ilość wyświetleń" class="panel-choose-post-content-icon">
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
+                                        <a>500</a>
+                                        <img src="img/star-white.png" alt="Ilość polubień" class="panel-choose-post-content-icon">
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>12 320PLN</a>
+                                        <img src="img/money-white.png" alt="Twój zarobek" class="panel-choose-post-content-icon">
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>EDYTUJ</a>
+                                        <a>&nbsp;/&nbsp;</a>
+                                        <a>USUŃ</a>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-choose-post" id="slide3" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>STATYSTYKI</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <!-- STATYSTYKI -->
+
+
+                        </div>
+
+                    </div>
+                    <div class="panel-choose-post" id="slide4" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>TWÓJ PROFIL</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <!-- TWÓJ PROFIL -->
+                        </div>
+
+                    </div>
+                    <div class="panel-choose-post" id="slide5" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>USTAWIENIA</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <!-- USTAWIENIA -->
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>

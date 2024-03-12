@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dataType: 'json',
             data: {id: categoryID},
             success:function(category){
-                console.log(category);
+                document.title = category[0].cat_name+" | "+"NBCT BEATS";
                 let cat = document.getElementById("category-name");
                 cat.innerHTML = category[0].cat_name;
                 let cat_img = document.getElementsByClassName("beat-info-el-img")[0];

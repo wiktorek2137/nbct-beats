@@ -117,25 +117,37 @@ if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
         </div>
         <div class="login-section-content">
             <!-- FORM -->
-            <form action="php/loginSearch.php" method="POST" class="login-form">
+            <form action="php/registerAdd.php" method="POST" class="login-form">
                 <div class="login-section">
                     <div class="login-item">
                         <a>EMAIL:</a>
-                        <input name="email" class="login-input" type="text" placeholder="Wpisz swój email">
+                        <input name="email" class="login-input" type="email" placeholder="Wpisz swój email">
                     </div>
                     <div class="login-item">
                         <div class="login-item-title">
                             <a>HASŁO:</a>
-                            <p>Przypomnij hasło</p>
                         </div>
                         <input name="password" class="login-input" type="password" placeholder="Wpisz swoje hasło">
                     </div>
+                    <div class="login-item">
+                        <div class="login-item-title">
+                            <a>POWTÓRZ HASŁO:</a>
+                        </div>
+                        <input name="repassword" class="login-input" type="password" placeholder="Wpisz swoje hasło">
+                    </div>
                     <button class="login-section-button">
                         <div id="login-btn" class="login-btn">
-                            <a>ZALOGUJ SIĘ</a>
+                            <a>ZAREJESTRUJ SIĘ</a>
                             <img src="img/nbct-arrow.svg" alt="">
                         </div>
                     </button>
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            // echo '<div class="login-diver"></div>';
+                            echo '<div class="form-error"><a>' . $_SESSION['error'] . '</a></div>'; // Wyświetlenie błędu
+                            unset($_SESSION['error']); // Usunięcie błędu z sesji, aby nie pojawiał się ponownie
+                        }
+                    ?>
                     <!-- <div class="login-diver"></div> -->
                 </div>
             </form>

@@ -508,13 +508,14 @@ a{
     font-size: 20px;
     padding: 0 0px 0 20px;
     color: white;
+    z-index: 10;
 }
 .futured-section-desc a{
     font-family: Termina;
     src: url('Termina-light.otf');
     font-weight: lighter;
 }
-.futured-section-desc a:link{
+.futured-section-desc a:link, .futured-section-desc a:visited{
     color:#F7B9B0
 }
 .futured-section-content{
@@ -824,11 +825,9 @@ a{
 }
 .checkout-section-content-el{
     width: 100%;
-    height: 150px;
     z-index: 10;
     display: flex;
     margin: 10px 0;
-
 }
 .checkout-section-content-el-img{
     background-image: url(img/covers/baba.png);
@@ -1078,6 +1077,10 @@ a{
     font-weight: lighter;
 }
 .checkout-panel-desc a:link{
+    color: #F7B9B0;
+    transition: 0.2s;
+}
+.checkout-panel-desc a:visited{
     color: #F7B9B0;
     transition: 0.2s;
 }
@@ -2130,7 +2133,7 @@ iframe{
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
 }
 .panel-content{
     width: 85%;
@@ -2146,6 +2149,10 @@ iframe{
     justify-content: left;
     padding: 10px 20px;
     cursor: pointer;
+    transition: 0.2s;
+}
+.panel-menu-item:hover{
+    background-color: #FF3D00;
 }
 .panel-menu-item a{
     font-size: 15px;
@@ -2160,9 +2167,236 @@ iframe{
     margin: 0 10px 0 0;
 }
 .panel-choose{
-    background-color: #F7B9B0;
-    height: 500px;
-}
-.panel-choose-post{
+    background-color: white;
     padding: 30px;
 }
+.form-error{
+    padding: 10px;
+}
+.form-error a{
+    color: red;
+    font-family: Termina;
+    src: url('Termina-light.otf');
+    font-weight: lighter;
+    font-size: 10px;
+}
+.panel-choose-post{
+    height: 100%;
+    display: flex;
+}
+.panel-choose-post-title{
+    font-size: 20px;
+    padding: 0 0 10px 0;
+}
+.panel-choose-post-content{
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+}
+.panel-choose-post-content-el{
+    width: 300px;
+}
+.panel-choose-post-content-el-stats{
+    background-color: #F7B9B0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+}
+.panel-choose-post-content-el-stats p{
+    font-size: 20px;
+    font-family: 'Termina';
+    font-weight: bolder;
+}
+.panel-choose-post-content-el-stats a{
+    font-size: 10px;
+    font-family: 'Termina';
+    font-weight: lighter;
+}
+.panel-choose-post-content-el-form{
+    width: 100%;
+    height: 100%;
+}
+.panel-form-headliner{
+    background-color: black;
+    padding: 20px;
+    color: white;
+}
+.panel-form-content{
+    display: flex;
+    background-color: #F7B9B0;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.panel-form-content input, .panel-form-content select{
+    border: 1px solid black;
+    text-transform: uppercase;
+    color: #000000;
+    outline: none;
+    padding: 5px;
+    font-size: 10px;
+    font-family: 'Termina';
+    font-weight: lighter;
+}
+.panel-form-item{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.panel-form-btn{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #FF3D00;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border: 0
+}
+.panel-form-btn:hover{
+    background-color: #FF3D00;
+    color: white;
+}
+.panel-form-btn a{
+    padding: 5px;
+    font-family: 'Termina';
+    font-weight: bolder;
+}
+.panel-choose-post-content-el-img{
+    background-image: url(img/covers/baba.png);
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 250px;
+}
+.panel-choose-post-content-el-info{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+    cursor: pointer;
+    background-color: #F7B9B0;
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+}
+.panel-choose-post-content-el-info:hover{
+    background-color: #FF3D00
+}
+.panel-choose-post-content-el-info p{
+    font-size: 20px;
+    font-family: 'Termina';
+    font-weight: bolder;
+}
+.panel-choose-post-content-el-info a{
+    font-family: 'Termina';
+    font-weight: lighter;
+}
+.panel-choose-post-content-el-edit{
+    font-size: 10px;
+}
+.panel-choose-post-content-tresci{
+    width: 100%;
+    background-color: #F7B9B0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 350px;
+    padding: 20px;
+    gap: 20px;
+}
+.panel-choose-post-content-tresci-el{
+    display: flex;
+    padding: 5px;
+    flex-direction: row;
+    color: rgb(255, 255, 255);
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    cursor: pointer;
+    background-color: #000000;
+    transition: 0.2s;
+}
+.panel-choose-post-content-tresci-img{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(img/covers/baba.png);
+}
+.panel-choose-post-content-tresci-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.panel-choose-post-content-tresci-info-desc{
+    display: flex;
+    flex-direction: column;
+}
+.panel-choose-post-content-tresci-info-desc a{
+    font-family: 'Termina';
+    font-weight: lighter;
+    font-size: 10px;
+}
+.panel-choose-post-content-headliner{
+    background-color: #000000;
+    padding: 30px 55px 30px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.panel-choose-post-content-icon{
+    width: 20px;
+    padding: 5px;
+}
+.panel-choose-post-content-tresci-views,
+.panel-choose-post-content-tresci-like,
+.panel-choose-post-content-tresci-sell{
+    display: flex;
+    align-items: center;
+}
+.panel-choose-post-content-tresci-views a,
+.panel-choose-post-content-tresci-like a,
+.panel-choose-post-content-tresci-sell a{
+    font-family: 'Termina';
+    font-weight: lighter;
+    font-size: 10px;
+}
+.panel-choose-post-content-column {
+    width: 200px; /* Przykładowa szerokość */
+    display: flex;
+    align-items: center;
+}
+.panel-choose-post-content-column-fr {
+    width: 300px; /* Przykładowa szerokość */
+    display: flex;
+    align-items: center;
+}
+/* .panel-choose-post-content-tresci-el:hover .panel-choose-post-content-tresci-details,
+.panel-choose-post-content-tresci-el:hover .panel-choose-post-content-tresci-views,
+.panel-choose-post-content-tresci-el:hover .panel-choose-post-content-tresci-like,
+.panel-choose-post-content-tresci-el:hover .panel-choose-post-content-tresci-sell {
+    display: none;
+}
+.panel-choose-post-content-tresci-el .icons-on-hover {
+    display: none;
+} */
+
+/* /* .panel-choose-post-content-tresci-el:hover .icons-on-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+} */
+.panel-choose-post-content-tresci-el:hover{
+    background-color: #FF3D00;
+}
+/* .panel-choose-post-content-tresci-el:hover .panel-choose-post-content-column{
+    width: 100px;
+}  */

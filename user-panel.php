@@ -11,8 +11,8 @@ if ($_SESSION['type'] !== 'user') {
     header('Location: login_page.php');
     exit;
 }
-
-
+$prodId = isset($_SESSION['prod_id']) ? $_SESSION['prod_id'] : '0';
+$userid = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="pl">

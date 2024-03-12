@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if ($password === $row['user_password']) { // W prawdziwej aplikacji użyj password_verify
+        if (password_verify($password, $row['user_password'])) { // W prawdziwej aplikacji użyj password_verify
             // Ustawienie zmiennych sesji
             $_SESSION['zalogowany'] = true;
             $_SESSION['id'] = $row['user_id'];

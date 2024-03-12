@@ -112,7 +112,7 @@ if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
             </div>
             <div class="futured-section-desc">
                 <a>Jeśli nie masz konta</a>
-                <a href="register.html">zarejestruj się</a>
+                <a href="register_page.php">zarejestruj się</a>
             </div>
         </div>
         <div class="login-section-content">
@@ -121,7 +121,7 @@ if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
                 <div class="login-section">
                     <div class="login-item">
                         <a>EMAIL:</a>
-                        <input name="email" class="login-input" type="text" placeholder="Wpisz swój email">
+                        <input name="email" class="login-input" type="email" placeholder="Wpisz swój email">
                     </div>
                     <div class="login-item">
                         <div class="login-item-title">
@@ -136,7 +136,13 @@ if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
                             <img src="img/nbct-arrow.svg" alt="">
                         </div>
                     </button>
-                    <!-- <div class="login-diver"></div> -->
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            // echo '<div class="login-diver"></div>';
+                            echo '<div class="form-error"><a>' . $_SESSION['error'] . '</a></div>'; // Wyświetlenie błędu
+                            unset($_SESSION['error']); // Usunięcie błędu z sesji, aby nie pojawiał się ponownie
+                        }
+                    ?>
                 </div>
             </form>
             <!--  -->
