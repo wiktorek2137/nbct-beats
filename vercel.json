@@ -1,7 +1,10 @@
 {
   "functions": {
-    "home_page.php": {
+    "php/*.php": {
       "runtime": "vercel-php@0.7.0"
     }
-  }
+  },
+  "routes": [
+    { "src": "/(.*)",  "dest": "home_page.php" }
+  ]
 }
