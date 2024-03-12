@@ -1,5 +1,7 @@
 {
-    "rewrites": [
-        {"source": "/(.*)", "destination": "/"}
-    ]
+  "functions": {
+    "*.php": {
+      "runtime": "vercel-php@0.7.0"
+    }
+  }
 }
