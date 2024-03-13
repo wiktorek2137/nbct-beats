@@ -348,10 +348,10 @@ a{
 .prod-section-prods{
     background-color: rgb(0, 0, 0);
     width: 100%;
-    height: 800px;
+    height: 900px;
 }
 .linie-el-prods{
-    height: 800px;
+    height: 900px;
     display: flex;
     justify-content: center;
     background-image: url(img/dot.svg);
@@ -1182,6 +1182,7 @@ a{
 .player-title{
     font-size: 20px;
     font-family: Termina;
+    cursor: pointer;
     src: url('Termina-Bold.otf');
     font-weight: bold;
     text-transform: uppercase;
@@ -1191,11 +1192,22 @@ a{
     width: 100%; /* Ustaw szerokość elementu (możesz dostosować do potrzeb) */
     display: block; /* Zapewnia, że element zachowuje się jak blok, co jest potrzebne do działania ellipsis */
 }
-.player-autor,.player-key{
+.player-autor{
+    font-size: 10px;
+    cursor: pointer;
+    font-family: Termina;
+    src: url('Termina.otf');
+    font-weight: lighter;
+    color: black;
+    text-decoration: none;
+}
+.player-key{
     font-size: 10px;
     font-family: Termina;
     src: url('Termina.otf');
     font-weight: lighter;
+    color: black;
+    text-decoration: none;
 }
 .player-controls{
     width: 50%;
@@ -2258,6 +2270,18 @@ iframe{
     cursor: pointer;
     border: 0
 }
+.noerror{
+    color: green;
+    font-size: 10px;
+    font-family: 'Termina';
+    font-weight: lighter;
+}
+.error{
+    color: red;
+    font-size: 10px;
+    font-family: 'Termina';
+    font-weight: lighter;
+}
 .panel-form-btn:hover{
     background-color: #FF3D00;
     color: white;
@@ -2268,7 +2292,7 @@ iframe{
     font-weight: bolder;
 }
 .panel-choose-post-content-el-img{
-    background-image: url(img/covers/baba.png);
+    background-color: #000000;
     background-position: center;
     background-size: cover;
     width: 300px;
@@ -2279,13 +2303,15 @@ iframe{
     display: flex;
     flex-direction: column;
     transition: 0.2s;
-    cursor: pointer;
     background-color: #F7B9B0;
     color: rgb(0, 0, 0);
     font-size: 10px;
 }
-.panel-choose-post-content-el-info:hover{
-    background-color: #FF3D00
+.panel-choose-post-content-el-info-diver{
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+    margin: 5px 0 5px 0;
 }
 .panel-choose-post-content-el-info p{
     font-size: 20px;
@@ -2295,6 +2321,10 @@ iframe{
 .panel-choose-post-content-el-info a{
     font-family: 'Termina';
     font-weight: lighter;
+    white-space: nowrap; /* Zapobiega przechodzeniu tekstu na nową linię */
+    overflow: hidden; /* Ukrywa tekst, który "wychodzi" poza element */
+    text-overflow: ellipsis; /* Dodaje "..." na końcu, gdy tekst jest za długi */
+    display: block; /* lub 'display: flex;', jeśli potrzebujesz używać właściwości flex */
 }
 .panel-choose-post-content-el-edit{
     font-size: 10px;
@@ -2318,13 +2348,13 @@ iframe{
     justify-content: space-between;
     align-items: center;
     height: 100px;
-    cursor: pointer;
     background-color: #000000;
     transition: 0.2s;
 }
 .panel-choose-post-content-tresci-img{
     width: 100px;
     height: 100px;
+    aspect-ratio: 1/1;
     background-size: cover;
     background-position: center;
     background-image: url(img/covers/baba.png);
@@ -2362,6 +2392,7 @@ iframe{
     align-items: center;
 }
 .panel-choose-post-content-tresci-views a,
+.panel-choose-post-content-tresci-edit a,
 .panel-choose-post-content-tresci-like a,
 .panel-choose-post-content-tresci-sell a{
     font-family: 'Termina';
@@ -2373,10 +2404,12 @@ iframe{
     display: flex;
     align-items: center;
 }
-.panel-choose-post-content-column-fr {
-    width: 300px; /* Przykładowa szerokość */
-    display: flex;
-    align-items: center;
+.panel-choose-post-content-column a{
+    transition: 0.2s;
+}
+.tresci-edit:hover, .tresci-delete:hover,.tresci-cancel:hover,.tresci-save:hover{
+    color: black;
+    cursor: pointer;
 }
 /* .panel-choose-post-content-tresci-el:hover .panel-choose-post-content-tresci-details,
 .panel-choose-post-content-tresci-el:hover .panel-choose-post-content-tresci-views,

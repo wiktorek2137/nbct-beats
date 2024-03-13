@@ -44,8 +44,20 @@ function newestCreate(){
             NewElImgBtn.addEventListener("click", function() {
                 music.src = singleNew.music; // Ustaw nowe źródło dla audio
                 onPlay(); // Odtwórz muzykę
+
+                let beatID = singleNew.id;
+                let autorID = singleNew.autorid;
+
                 playerTitle.textContent = singleNew.name;
                 playerAutor.textContent = singleNew.autor;
+
+                playerTitle.addEventListener("click", function(){
+                    window.location.href = `single_beat.php?id=${beatID}`;
+                })
+                playerAutor.addEventListener("click", function(){
+                    window.location.href = `single_autor.php?id=${autorID}`;
+                    console.log(autorID);
+                })
                 playerBpm.textContent = singleNew.bpm+"BPM"+" / "+singleNew.key;
                 playerImg.src = singleNew.img;
             });

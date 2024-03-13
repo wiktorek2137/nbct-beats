@@ -155,6 +155,8 @@ $userid = $_SESSION['id'];
                                 <div class="panel-choose-post-content-el-img"></div>
                                 <div class="panel-choose-post-content-el-info">
                                     <p>NAJNOWSZY BEAT</p>
+                                    <a id="beat-name">NAZWA BEATU</a>
+                                    <div class="panel-choose-post-content-el-info-diver"></div>
                                     <a>XXX SŁUCHACZY</a>
                                     <a>XXX ODDTWORZEŃ</a>
                                     <a>XXX POLUBIEŃ</a>
@@ -209,16 +211,24 @@ $userid = $_SESSION['id'];
                                         <a>KATEGORIA</a>
                                         <select name="beat_cat" id="cat-id">
                                             <option value="">WYBIERZ OPCJĘ</option>
-                                            <option value="HIP-HOP">HIP-HOP</option>
-                                            <option value="POP">POP</option>
-                                            <option value="HOUSE">HOUSE</option>
-                                            <option value="DRILL">DRILL</option>
+                                            <option value="1">HIP-HOP</option>
+                                            <option value="2">POP</option>
+                                            <option value="3">HOUSE</option>
+                                            <option value="4">DRILL</option>
+                                            <option value="5">SOUL</option>
+                                            <option value="6">BOOM BAP</option>
                                             <!-- Dodaj pozostałe kategorie według potrzeb -->
                                         </select>
                                     </div>
-                                    <div class="panel-form-btn">
-                                        <button type="submit">DODAJ BEAT</button>
-                                    </div>
+                                    <button class="panel-form-btn">
+                                        <a>DODAJ BEAT</a>
+                                    </button>
+                                    <?php
+                                        if(isset($_SESSION['message'])){
+                                            echo $_SESSION['message'];
+                                            unset($_SESSION['message']);
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </form>
@@ -251,93 +261,12 @@ $userid = $_SESSION['id'];
 
                                     </div>
                                     <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
-                                        <!-- <a>DZIAŁANIA</a> -->
-
+                                        <a>DZIAŁANIA</a>
                                     </div>
                             </div>
                         <div class="panel-choose-post-content">
                             <!-- TREŚCI -->
                             <div class="panel-choose-post-content-tresci">
-                                <!--  -->
-                                <div class="panel-choose-post-content-tresci-el">
-                                    <div class="panel-choose-post-content-tresci-info panel-choose-post-content-column">
-                                        <div class="panel-choose-post-content-tresci-img">
-                                        </div>
-                                        <div class="panel-choose-post-content-tresci-details">
-                                            <div class="panel-choose-post-content-tresci-info-title">
-                                                <a>tytul</a>
-                                            </div>
-                                            <div class="panel-choose-post-content-tresci-info-desc">
-                                                <a>120BPM</a>
-                                                <a>C#m</a>
-                                                <a>TRAP</a>
-                                                <a>400PLN</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="icons-on-hover">
-                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
-                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
-                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
-                                    </div> -->
-                                    <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
-                                        <a>10 000</a>
-                                        <img src="img/eye-white.png" alt="Ilość wyświetleń" class="panel-choose-post-content-icon">
-                                    </div>
-                                    <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
-                                        <a>500</a>
-                                        <img src="img/star-white.png" alt="Ilość polubień" class="panel-choose-post-content-icon">
-                                    </div>
-                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
-                                        <a>12 320PLN</a>
-                                        <img src="img/money-white.png" alt="Twój zarobek" class="panel-choose-post-content-icon">
-                                    </div>
-                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
-                                        <a>EDYTUJ</a>
-                                        <a>&nbsp;/&nbsp;</a>
-                                        <a>USUŃ</a>
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <div class="panel-choose-post-content-tresci-el">
-                                    <div class="panel-choose-post-content-tresci-info panel-choose-post-content-column">
-                                        <div class="panel-choose-post-content-tresci-img">
-                                        </div>
-                                        <div class="panel-choose-post-content-tresci-details">
-                                            <div class="panel-choose-post-content-tresci-info-title">
-                                                <a>tytul</a>
-                                            </div>
-                                            <div class="panel-choose-post-content-tresci-info-desc">
-                                                <a>120BPM</a>
-                                                <a>C#m</a>
-                                                <a>TRAP</a>
-                                                <a>400PLN</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="icons-on-hover">
-                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
-                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
-                                            <img src="img/star-white.png" class="panel-choose-post-content-icon">
-                                    </div> -->
-                                    <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
-                                        <a>10 000</a>
-                                        <img src="img/eye-white.png" alt="Ilość wyświetleń" class="panel-choose-post-content-icon">
-                                    </div>
-                                    <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
-                                        <a>500</a>
-                                        <img src="img/star-white.png" alt="Ilość polubień" class="panel-choose-post-content-icon">
-                                    </div>
-                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
-                                        <a>12 320PLN</a>
-                                        <img src="img/money-white.png" alt="Twój zarobek" class="panel-choose-post-content-icon">
-                                    </div>
-                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
-                                        <a>EDYTUJ</a>
-                                        <a>&nbsp;/&nbsp;</a>
-                                        <a>USUŃ</a>
-                                    </div>
-                                </div>
                                 <!--  -->
                             </div>
                         </div>
@@ -350,6 +279,7 @@ $userid = $_SESSION['id'];
                         <div class="panel-choose-post-content">
                             <!-- STATYSTYKI -->
 
+                            <a>Jeszcze nad tym pracujemy...</a>
 
                         </div>
 
@@ -361,6 +291,9 @@ $userid = $_SESSION['id'];
                         </div>
                         <div class="panel-choose-post-content">
                             <!-- TWÓJ PROFIL -->
+
+                            <a>Jeszcze nad tym pracujemy...</a>
+
                         </div>
 
                     </div>
@@ -372,6 +305,7 @@ $userid = $_SESSION['id'];
                         <div class="panel-choose-post-content">
                             <!-- USTAWIENIA -->
 
+                            <a>Jeszcze nad tym pracujemy...</a>
 
                         </div>
 

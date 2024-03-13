@@ -66,8 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     PopularNewElImgBtn.addEventListener("click", function() {
                         music.src = singleNewestBeat.music; // Ustaw nowe źródło dla audio
                         onPlay(); // Odtwórz muzykę
+
+                        let beatID = singleNewestBeat.id;
+                        let autorID = singleNewestBeat.autorid;
+
                         playerTitle.textContent = singleNewestBeat.name;
                         playerAutor.textContent = singleNewestBeat.autor;
+
+                        playerTitle.addEventListener("click", function(){
+                            window.location.href = `single_beat.php?id=${beatID}`;
+                        })
+                        playerAutor.addEventListener("click", function(){
+                            window.location.href = `single_autor.php?id=${autorID}`;
+                            console.log(autorID);
+                        })
+
                         playerBpm.textContent = singleNewestBeat.bpm+"BPM"+" / "+singleNewestBeat.key;
                         playerImg.src = singleNewestBeat.img;
                     });
@@ -166,8 +179,21 @@ function playNextTrack() {
         music.play(); // Odtwórz muzykę
 
         // Aktualizacja interfejsu użytkownika
-        document.getElementById('player-title').textContent = track.name;
-        document.getElementById('player-autor').textContent = track.autor;
+        let beatID = track.id;
+        let trackUrl = `single_beat.php?id=${beatID}`;
+
+        let autorID = track.autorId;
+        let autorUrl = `single_autor.php?id=${autorID}`;
+
+
+        // Ustawienie nazwy utworu jako odnośnika
+        let playerTitle = document.getElementById('player-title');
+        playerTitle.innerHTML = `<a href="${trackUrl}">${track.name}</a>`;
+
+        // Ustawienie autora jako odnośnika
+        let playerAutor = document.getElementById('player-autor');
+        playerAutor.innerHTML = `<a href="${autorUrl}">${track.autor}</a>`;
+
         document.getElementById('player-img').src = track.img;
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
