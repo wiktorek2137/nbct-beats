@@ -157,15 +157,13 @@ $userid = $_SESSION['id'];
                                     <p>NAJNOWSZY BEAT</p>
                                     <a id="beat-name">NAZWA BEATU</a>
                                     <div class="panel-choose-post-content-el-info-diver"></div>
-                                    <a>XXX SŁUCHACZY</a>
-                                    <a>XXX ODDTWORZEŃ</a>
-                                    <a>XXX POLUBIEŃ</a>
-                                    <a>XXX PLN</a>
+                                    <a id="beat-views">XXX WYŚWIETLEŃ</a>
+                                    <a id="beat-likes">XXX POLUBIEŃ</a>
+                                    <!-- <a>XXX PLN</a> -->
                                 </div>
                                 <div class="panel-choose-post-content-el-stats">
                                     <p>OSTATNIE 7 DNI</p>
-                                    <a>XXX SŁUCHACZY</a>
-                                    <a>XXX ODDTWORZEŃ</a>
+                                    <a>XXX WYŚWIETLEŃ</a>
                                     <a>XXX POLUBIEŃ</a>
                                     <a>XXX PLN</a>
                                 </div>
@@ -243,7 +241,7 @@ $userid = $_SESSION['id'];
                         </div>
                         <div class="panel-choose-post-content-headliner">
                                     <div class="panel-choose-post-content-tresci-info">
-                                        <div class="panel-choose-post-content-tresci-details panel-choose-post-content-column">
+                                        <div class="panel-choose-post-content-tresci-details-headliner">
                                             <div class="panel-choose-post-content-tresci-views">
                                                 <a>PRODUKCJE</a>
                                             </div>
@@ -313,59 +311,7 @@ $userid = $_SESSION['id'];
                 </div>
             </div>
         </div>
-        <!-- BANDANA -->
-        <!-- <div class="bandana-section bandana-section-prod">
-            <div class="bandana-el">
-                <div class="bandana-el-text">
-                    <span>SPRAWDŹ NASZE BEATY</span>
-                    <span>SPRAWDŹ NASZE BEATY</span>
-                </div>
-            </div>
-        </div> -->
-        <!-- ? -->
     </div>
-
-    <!-- FUTURED -->
-    <div class="player-section" id="player">
-        <div class="player-info">
-            <div class="player-img">
-                <img src="img/covers/baba.png" id="player-img">
-            </div>
-            <div class="player-details">
-                <div class="player-title" id="player-title">TYTUŁ KAWAŁKA</div>
-                <div class="player-autor" id="player-autor">AUTOR</div>
-                <div class="player-key" id="player-bpm">C-MINOR/120BPM</div>
-            </div>
-        </div>
-        <div class="player-controls">
-            <div class="player-buttons">
-                <img src="img/nbct-arrow.svg" class="left-arrow" id="prevTrackButton">
-                <div onclick="onStop()"><img src="img/stop.svg" id="playicon"></div>
-                <img src="img/nbct-arrow.svg" class="right-arrow" id="nextTrackButton">
-            </div>
-            <div class="player-timeline">
-                <div class="start-time" id="currentclock"></div>
-                <input type="range" id="timeline" min="0" max="100" step="1">
-                <div class="end-time" id="endclock"></div>
-            </div>
-        </div>
-        <div class="player-volume">
-            <img src="img/volume-max.svg" id="volumeicon" class="volume-icon">
-            <input type="range" id="volume" min="0" max="1" step="0.01">
-        </div>
-    </div>
-    <!-- LINIE W TLE NIE DOTYKAĆ -->
-    <!-- <div class="linie-cont">
-        <div class="linie">
-            <div class="linie-el"></div>
-            <div class="linie-el"></div>
-            <div class="linie-el"></div>
-            <div class="linie-el"></div>
-            <div class="linie-el"></div>
-            <div class="linie-el"></div>
-            <div class="linie-el"></div>
-        </div>
-    </div> -->
     <!-- FOOTER -->
     <div class="footer">
         <div class="footer-links">

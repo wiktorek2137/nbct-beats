@@ -146,12 +146,96 @@ $userid = $_SESSION['id'];
             </div>
             <div class="panel-content">
                 <div class="panel-choose">
-                    <div class="panel-choose-post">
-                        <!-- CONTENT -->
+                    <div class="panel-choose-post" id="slide1">
+
+                        <div class="panel-choose-post-title">
+                            <a>PANEL</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+
+
+                        </div>
+
+                    </div>
+                    <div class="panel-choose-post" id="slide2" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>ZAMÓWIENIA</a>
+                        </div>
+                        <div class="panel-choose-post-content-headliner">
+                                    <div class="panel-choose-post-content-tresci-info">
+                                        <div class="panel-choose-post-content-tresci-details-headliner">
+                                            <div class="panel-choose-post-content-tresci-views">
+                                                <a>PRODUKCJE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
+                                        <a>WYŚWIETLENIA</a>
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
+                                        <a>POLUBIENIA</a>
+
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>ZAROBEK</a>
+
+                                    </div>
+                                    <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">
+                                        <a>DZIAŁANIA</a>
+                                    </div>
+                            </div>
+                        <div class="panel-choose-post-content">
+                            <!-- TREŚCI -->
+                            <div class="panel-choose-post-content-tresci">
+                                <!--  -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-choose-post" id="slide3" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>ULUBIONE</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <!-- STATYSTYKI -->
+
+                            <a>Jeszcze nad tym pracujemy...</a>
+
+                        </div>
+
+                    </div>
+                    <div class="panel-choose-post" id="slide4" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>TWÓJ PROFIL</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <!-- TWÓJ PROFIL -->
+
+                            <a>Jeszcze nad tym pracujemy...</a>
+
+                        </div>
+
+                    </div>
+                    <div class="panel-choose-post" id="slide5" style="display: none;">
+
+                        <div class="panel-choose-post-title">
+                            <a>USTAWIENIA</a>
+                        </div>
+                        <div class="panel-choose-post-content">
+                            <!-- USTAWIENIA -->
+
+                            <a>Jeszcze nad tym pracujemy...</a>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
         <!-- BANDANA -->
         <!-- <div class="bandana-section bandana-section-prod">
             <div class="bandana-el">

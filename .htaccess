@@ -1,2 +1,12 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteBase /
+RewriteRule ^$ home_page.php [L]
+
+# Przekierowanie /login na login_page.php
+RewriteRule ^logowanie$ login_page.php [L]
+
 php_value post_max_size 50M
 php_value upload_max_filesize 50M

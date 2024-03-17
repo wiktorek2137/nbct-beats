@@ -1169,6 +1169,10 @@ a{
 }
 .player-img img{
     width: 70px;
+    height: 70px;
+    aspect-ratio: 1 / 1;
+    background-position: center;
+    background-size: cover;
 }
 .player-details{
     padding: 0 0 0 10px;
@@ -1863,6 +1867,8 @@ iframe{
 }
 .beat-info-icons img{
     width: 40px;
+    z-index: 10;
+    cursor: pointer;
 }
 .beat-info-title{
     padding: 10px 0 0 0;
@@ -1920,7 +1926,7 @@ iframe{
     background-color: black;
 }
 .beat-info-details-desc{
-    padding: 0 0px 0 20px;
+    padding: 0 0px 20px 20px;
     display: flex;
     flex-direction: column;
     font-size: 10px;
@@ -2071,6 +2077,21 @@ iframe{
     background-color: #000000;
     padding: 10px;
     color: white;
+}
+.login-item-terms{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+}
+.login-item-terms a{
+    font-size: 10px;
+    font-weight: lighter;
+    color: black;
+}
+.login-item-terms input[type="checkbox"]{
+    border-radius: 0;
+    margin-right: 10px;
 }
 .login-btn{
     font-size: 20px;
@@ -2351,6 +2372,12 @@ iframe{
     background-color: #000000;
     transition: 0.2s;
 }
+.panel-choose-post-content-tresci-details-headliner{
+    width: 300px;
+}
+.panel-choose-post-content-tresci-details{
+    width: 200px;
+}
 .panel-choose-post-content-tresci-img{
     width: 100px;
     height: 100px;
@@ -2358,6 +2385,14 @@ iframe{
     background-size: cover;
     background-position: center;
     background-image: url(img/covers/baba.png);
+}
+.panel-choose-post-content-tresci-info-title a{
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.panel-choose-post-content-tresci-info-title:hover a{
+    color: black;
 }
 .panel-choose-post-content-tresci-info{
     display: flex;

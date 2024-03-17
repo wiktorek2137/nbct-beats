@@ -109,9 +109,9 @@ session_start();
                     <a id="beat-autor-name">AUTOR</a>
                 </div>
                 <div class="beat-info-icons">
-                    <img src="img/download.png">
-                    <img src="img/fav.png">
-                    <img src="img/share.png">
+                    <img src="img/download.png" class="beat-info-icons-item">
+                    <img src="img/fav.png" class="beat-info-icons-item">
+                    <img src="img/share.png" class="beat-info-icons-item">
                 </div>
             </div>
             <!-- BANDANA -->
@@ -131,6 +131,12 @@ session_start();
                 </div>
                 <div class="beat-info-details-desc">
                     <!-- INFORAMCJE -->
+                </div>
+                <div class="beat-info-details-title">
+                    <a>STATYSTYKI</a>
+                </div>
+                <div class="beat-info-details-desc">
+                    <!-- STATYSTYKI -->
                 </div>
             </div>
         </div>

@@ -27,6 +27,12 @@ function adminNewestBeat(){
         let beatName = document.getElementById("beat-name");
         beatName.innerHTML = adminNewestBeatQuery[0]["beat_title"];
 
+        let beatViews = document.getElementById("beat-views");
+        beatViews.innerHTML = adminNewestBeatQuery[0]["beat_views"]+" WYŚWIETLEŃ";
+
+        let beatLikes = document.getElementById("beat-likes");
+        beatLikes.innerHTML = adminNewestBeatQuery[0]["beat_count"]+" POLUBIEŃ";
+
         // Pobranie wszystkich elementów z klasą 'panel-choose-post-content-el-img'
         let beatImgs = document.getElementsByClassName("panel-choose-post-content-el-img");
 
@@ -60,7 +66,7 @@ function adminBeatList() {
                         </div>
                         <div class="panel-choose-post-content-tresci-details">
                             <div class="panel-choose-post-content-tresci-info-title">
-                                <a>${element.beat_title}</a>
+                                <a href="single_beat.php?id=${element.beat_id}">${element.beat_title}</a>
                             </div>
                             <div class="panel-choose-post-content-tresci-info-desc">
                                 <a>${element.beat_bpm}BPM</a>
@@ -71,11 +77,11 @@ function adminBeatList() {
                         </div>
                     </div>
                     <div class="panel-choose-post-content-tresci-views panel-choose-post-content-column">
-                        <a>${element.views}</a>
+                        <a>${element.beat_views}</a>
                         <img src="img/eye-white.png" alt="Ilość wyświetleń" class="panel-choose-post-content-icon">
                     </div>
                     <div class="panel-choose-post-content-tresci-like panel-choose-post-content-column">
-                        <a>${element.likes}</a>
+                        <a>${element.beat_count}</a>
                         <img src="img/star-white.png" alt="Ilość polubień" class="panel-choose-post-content-icon">
                     </div>
                     <div class="panel-choose-post-content-tresci-sell panel-choose-post-content-column">

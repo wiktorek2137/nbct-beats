@@ -45,6 +45,9 @@ function newestCreate(){
                 music.src = singleNew.music; // Ustaw nowe źródło dla audio
                 onPlay(); // Odtwórz muzykę
 
+                console.log(singleNew.id)
+                trackIndex(singleNew.id)
+
                 let beatID = singleNew.id;
                 let autorID = singleNew.autorid;
 
@@ -125,6 +128,7 @@ let volumeIcon = document.getElementById("volumeicon");
 let music = new Audio("uploads/music/wiktorek.wav");
 
 function onPlay(){
+    playIcon.src = "img/stop.svg";
     player.style.transform = "translateY(0)";
     music.play();
     isPlaying = true;
@@ -140,6 +144,24 @@ function onStop(){
         isPlaying = true;
         playIcon.src = "img/stop.svg";
     }
+}
+function trackIndex(a){
+    let updateId = a;
+    updatePlayCount(updateId)
+}
+function updatePlayCount(id) {
+    console.log(id)
+        $.ajax({
+            url: "php/beatStatsUpdate.php",
+            type: "POST",
+            data: { beatId: id },
+            success: function(response) {
+                console.log("Dodano wyświetlenie", response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Nie udało się dodać wyświetlenia", error);
+            }
+        });
 }
 function noPlay(){
     player.style.transform = "translateY(100px)";
@@ -159,6 +181,7 @@ function playNextTrack() {
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
         isPlaying = true;
+        playIcon.src = "img/stop.svg";
     }
 }
 document.getElementById('nextTrackButton').addEventListener('click', playNextTrack);
@@ -185,6 +208,12 @@ function playPrevTrack() {
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
         isPlaying = true;
+        playIcon.src = "img/stop.svg";
+
+        clearTimeout(playTimer); // Wyczyść poprzedni timer, jeśli istnieje
+        playTimer = setTimeout(function() {
+            updatePlayCount(); // Ponownie ustaw timer przy wznowieniu odtwarzania
+        }, 10000); // Ustaw timer na 20 sekund
     }
 }
 document.getElementById('prevTrackButton').addEventListener('click', playPrevTrack);

@@ -141,6 +141,10 @@ if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
                             <img src="img/nbct-arrow.svg" alt="">
                         </div>
                     </button>
+                    <div class="login-item-terms">
+                        <input type="checkbox" require>
+                        <a>Akceptuję Regulamin i Politykę Prywatności sklepu.</a>
+                    </div>
                     <?php
                         if (isset($_SESSION['error'])) {
                             // echo '<div class="login-diver"></div>';

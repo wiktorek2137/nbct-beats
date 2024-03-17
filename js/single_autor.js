@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!trackExists) {
                         tracks.push(singleNewestBeat); // Dodaj utwór, jeśli nie istnieje
                     }
-                    console.log(singleNewestBeat)
 
 
                     let PopularNewSection = document.getElementsByClassName("beat-futured-section-content")[0];
@@ -70,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     PopularNewElImgBtn.addEventListener("click", function() {
                         music.src = singleNewestBeat.music; // Ustaw nowe źródło dla audio
                         onPlay(); // Odtwórz muzykę
+
+                        // console.log(singleNewestBeat.id)
+                        trackIndex(singleNewestBeat.id)
 
                         let beatID = singleNewestBeat.id;
                         let autorID = singleNewestBeat.autorId;
@@ -182,6 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     PopularNewElImgBtn.addEventListener("click", function() {
                         music.src = singleNewestBeat.music; // Ustaw nowe źródło dla audio
                         onPlay(); // Odtwórz muzykę
+
+                        // console.log(singleNewestBeat.id)
+                        trackIndex(singleNewestBeat.id)
+
                         playerTitle.textContent = singleNewestBeat.name;
                         playerAutor.textContent = singleNewestBeat.autor;
                         playerBpm.textContent = singleNewestBeat.bpm+"BPM"+" / "+singleNewestBeat.key;
@@ -251,9 +257,8 @@ let playIcon = document.getElementById("playicon");
 let volumeIcon = document.getElementById("volumeicon");
 let music = new Audio("uploads/music/wiktorek.wav");
 
-
-
 function onPlay(){
+    playIcon.src = "img/stop.svg";
     player.style.transform = "translateY(0)";
     music.play();
     isPlaying = true;
@@ -270,6 +275,24 @@ function onStop(){
         playIcon.src = "img/stop.svg";
     }
 }
+function trackIndex(a){
+    let updateId = a;
+    updatePlayCount(updateId)
+}
+function updatePlayCount(id) {
+    console.log(id)
+        $.ajax({
+            url: "php/beatStatsUpdate.php",
+            type: "POST",
+            data: { beatId: id },
+            success: function(response) {
+                console.log("Dodano wyświetlenie", response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Nie udało się dodać wyświetlenia", error);
+            }
+        });
+}
 function noPlay(){
     player.style.transform = "translateY(100px)";
 }
@@ -282,25 +305,13 @@ function playNextTrack() {
         music.play(); // Odtwórz muzykę
 
         // Aktualizacja interfejsu użytkownika
-        let beatID = track.id;
-        let trackUrl = `single_beat.php?id=${beatID}`;
-
-        let autorID = track.autorId;
-        let autorUrl = `single_autor.php?id=${autorID}`;
-
-
-        // Ustawienie nazwy utworu jako odnośnika
-        let playerTitle = document.getElementById('player-title');
-        playerTitle.innerHTML = `<a href="${trackUrl}">${track.name}</a>`;
-
-        // Ustawienie autora jako odnośnika
-        let playerAutor = document.getElementById('player-autor');
-        playerAutor.innerHTML = `<a href="${autorUrl}">${track.autor}</a>`;
-
+        document.getElementById('player-title').textContent = track.name;
+        document.getElementById('player-autor').textContent = track.autor;
         document.getElementById('player-img').src = track.img;
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
         isPlaying = true;
+        playIcon.src = "img/stop.svg";
     }
 }
 document.getElementById('nextTrackButton').addEventListener('click', playNextTrack);
@@ -321,32 +332,18 @@ function playPrevTrack() {
         music.play(); // Odtwórz muzykę
 
         // Aktualizacja interfejsu użytkownika
-        let beatID = track.id;
-        let trackUrl = `single_beat.php?id=${beatID}`;
-
-        let autorID = track.autorId;
-        let autorUrl = `single_autor.php?id=${autorID}`;
-
-
-        // Ustawienie nazwy utworu jako odnośnika
-        let playerTitle = document.getElementById('player-title');
-        playerTitle.innerHTML = `<a href="${trackUrl}">${track.name}</a>`;
-
-        // Ustawienie autora jako odnośnika
-        let playerAutor = document.getElementById('player-autor');
-        playerAutor.innerHTML = `<a href="${autorUrl}">${track.autor}</a>`;
-
-        document.getElementById('player-img').src = track.img;
-        document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
-
-        // Ustawienie obrazu, BPM i klucza (te pozostają bez zmian)
-        document.getElementById('player-img').src = track.img;
-        document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
-
+        document.getElementById('player-title').textContent = track.name;
+        document.getElementById('player-autor').textContent = track.autor;
         document.getElementById('player-img').src = track.img;
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
         isPlaying = true;
+        playIcon.src = "img/stop.svg";
+
+        clearTimeout(playTimer); // Wyczyść poprzedni timer, jeśli istnieje
+        playTimer = setTimeout(function() {
+            updatePlayCount(); // Ponownie ustaw timer przy wznowieniu odtwarzania
+        }, 10000); // Ustaw timer na 20 sekund
     }
 }
 document.getElementById('prevTrackButton').addEventListener('click', playPrevTrack);

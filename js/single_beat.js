@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 beatMusic.addEventListener("click", function() {
                     music.src = singleBeat[0].beat_music; // Ustaw nowe źródło dla audio
                     onPlay(); // Odtwórz muzykę
+                    console.log(singleBeat[0].beat_id)
+                    trackIndex(singleBeat[0].beat_id)
+
                     playerTitle.textContent = singleBeat[0].beat_title;
                     playerAutor.textContent = singleBeat[0].producer_name;
                     playerBpm.textContent = singleBeat[0].beat_bpm+"BPM"+" / "+singleBeat[0].beat_key;
@@ -42,6 +45,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!trackExists) {
                     tracks.push(singleBeat[0].beat_music); // Dodaj utwór, jeśli nie istnieje
                 }
+
+                let beat_icons = document.getElementsByClassName("beat-info-icons-item");
+                beat_icons[0].addEventListener("click", function(){
+                    let downloadLink = document.createElement("a");
+                    downloadLink.href = singleBeat[0].beat_music;
+                    downloadLink.download = singleBeat[0].beat_music.split('/').pop();
+                    downloadLink.click();
+                })
+                beat_icons[1].addEventListener("click", function(){
+                    console.log(singleBeat[0].beat_id)
+                        $.ajax({
+                            url: "php/beatLikesUpdate.php",
+                            type: "POST",
+                            data: { beatId: singleBeat[0].beat_id},
+                            success: function(response) {
+                                console.log("Dodano polubienie", response);
+                                alert("Dodano polubienie");
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Nie udało się dodać polubienia", error);
+                            }
+                        });
+                })
+                beat_icons[2].addEventListener("click", function(){
+                    let shareUrl = `http://localhost/nbct-beats/single_beat.php?id=${singleBeat[0].beat_id}`; // zmiana w wersji webowej
+                    console.log(shareUrl);
+                    // Używanie API schowka do skopiowania linku
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        alert('Link skopiowany do schowka');
+                        // Możesz tutaj dodać jakieś powiadomienie dla użytkownika, że link został skopiowany.
+                    }).catch(err => {
+                        console.error('Błąd podczas kopiowania do schowka', err);
+                        // Informowanie użytkownika o błędzie, jeśli kopiowanie nie powiedzie się.
+                    });
+
+                })
+
+
 
                 let beat_desc = document.getElementsByClassName("beat-info-details-desc")[0];
 
@@ -62,6 +103,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 wavLicence.innerHTML = singleBeat[0].beat_price*2+"PLN";
                 let stemLicence = document.getElementById("stemLicence");
                 stemLicence.innerHTML = singleBeat[0].beat_price*5+"PLN";
+
+                let beat_stats = document.getElementsByClassName("beat-info-details-desc")[1];
+
+                let beat_desc_views = document.createElement("a");
+                beat_desc_views.innerHTML = singleBeat[0].beat_views+" WYŚWIETLEŃ";
+                let beat_desc_likes = document.createElement("a");
+                beat_desc_likes.innerHTML = singleBeat[0].beat_count+" POLUBIEŃ";
+
+                beat_stats.appendChild(beat_desc_views);
+                beat_stats.appendChild(beat_desc_likes);
 
                 let boxes = document.getElementsByClassName("beat-section-license-content-price");
 
@@ -198,6 +249,7 @@ function beatFuturedCreate(){
             NewElImgBtn.addEventListener("click", function() {
                 music.src = singleNew.music; // Ustaw nowe źródło dla audio
                 onPlay(); // Odtwórz muzykę
+                trackIndex(singleNew.id)
                 playerTitle.textContent = singleNew.name;
                 playerAutor.textContent = singleNew.autor;
                 playerBpm.textContent = singleNew.bpm+"BPM"+" / "+singleNew.key;
@@ -266,6 +318,7 @@ let volumeIcon = document.getElementById("volumeicon");
 let music = new Audio("uploads/music/wiktorek.wav");
 
 function onPlay(){
+    playIcon.src = "img/stop.svg";
     player.style.transform = "translateY(0)";
     music.play();
     isPlaying = true;
@@ -281,6 +334,24 @@ function onStop(){
         isPlaying = true;
         playIcon.src = "img/stop.svg";
     }
+}
+function trackIndex(a){
+    let updateId = a;
+    updatePlayCount(updateId)
+}
+function updatePlayCount(id) {
+    console.log(id)
+        $.ajax({
+            url: "php/beatStatsUpdate.php",
+            type: "POST",
+            data: { beatId: id },
+            success: function(response) {
+                console.log("Dodano wyświetlenie", response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Nie udało się dodać wyświetlenia", error);
+            }
+        });
 }
 function noPlay(){
     player.style.transform = "translateY(100px)";
@@ -300,6 +371,7 @@ function playNextTrack() {
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
         isPlaying = true;
+        playIcon.src = "img/stop.svg";
     }
 }
 document.getElementById('nextTrackButton').addEventListener('click', playNextTrack);
@@ -326,6 +398,12 @@ function playPrevTrack() {
         document.getElementById('player-bpm').textContent = track.bpm + "BPM / " + track.key;
 
         isPlaying = true;
+        playIcon.src = "img/stop.svg";
+
+        clearTimeout(playTimer); // Wyczyść poprzedni timer, jeśli istnieje
+        playTimer = setTimeout(function() {
+            updatePlayCount(); // Ponownie ustaw timer przy wznowieniu odtwarzania
+        }, 10000); // Ustaw timer na 20 sekund
     }
 }
 document.getElementById('prevTrackButton').addEventListener('click', playPrevTrack);
